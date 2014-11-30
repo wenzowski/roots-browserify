@@ -36,9 +36,8 @@ module.exports = (opts) ->
       @deps = []
 
       @files = opts.files.map((f) => path.join(@roots.root, f))
-      @b = browserify(
+      @b = browserify(_.defaults opts.opts,
         entries: @files
-        extensions: ['.js', '.json', '.coffee']
         debug: opts.sourceMap
       )
 
